@@ -25,4 +25,4 @@ export class Admin extends Document {
     Password:string;
 
 }
-export const AdministradorSchema = SchemaFactory.createForClass(Admin);
+export const AdminSchema = SchemaFactory.createForClass(Admin);

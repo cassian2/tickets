@@ -20,10 +20,10 @@ export class CreateAdminDto {
     dni:string;
 
     @IsNumberString()
-    Celular:string;
+    celular:string;
     
     @MinLength(8)
     @MaxLength(10)
-    Password:string;
+    password:string;
     
 }

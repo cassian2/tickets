@@ -1,11 +1,31 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
+import { Admin } from './entities/admin.entity';
 
 @Injectable()
 export class AdminService {
-  create(createAdminDto: CreateAdminDto) {
-    return 'This action adds a new admin';
+  constructor(
+    @InjectModel(Admin.name)
+    private readonly adminModel:Model<Admin>
+  ){}
+  async create(createAdminDto: CreateAdminDto) {
+    createAdminDto.nombre=createAdminDto.nombre.toLowerCase();
+    createAdminDto.dni=createAdminDto.dni;
+    createAdminDto.celular=createAdminDto.celular;
+    try {
+      const admin=await this.adminModel.create(createAdminDto);
+
+      return admin;
+      
+    } catch (error) {
+      
+        throw new BadRequestException(error)
+      
+      
+    }
   }
 
   findAll() {
