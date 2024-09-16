@@ -12,10 +12,7 @@ export class Admin extends Document {
     @Prop()
     apellidos:string;
 
-    @Prop({
-        unique:true,
-        index:true,
-    })
+    @Prop()
     dni:string;
 
     @Prop()
