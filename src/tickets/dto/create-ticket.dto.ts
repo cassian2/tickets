@@ -19,13 +19,13 @@ export class CreateTicketDto {
 
     @IsNumberString()
     @MinLength(5)
-    cantidad:Int8Array;
+    cantidad:string;
 
     @IsNumberString()
     @MinLength(5)
-    usados:Int8Array;
+    usados:string;
 
     @IsNumberString()
     @Length(8)
-    dni:Int8Array;
+    dni:string;
 }

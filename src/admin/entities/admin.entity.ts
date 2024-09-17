@@ -4,7 +4,7 @@ import { Document} from "mongoose";
 @Schema()
 export class Admin extends Document {
     @Prop()
-    id_admin:Int16Array;
+    id_admin:string;
 
     @Prop()
     nombre:string;

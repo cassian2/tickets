@@ -11,6 +11,6 @@ import { Admin,AdminSchema } from './entities/admin.entity';
     { name: Admin.name, 
       schema:AdminSchema}
   ])],
-  exports:[AdminService]
+  
 })
 export class AdminModule {}
