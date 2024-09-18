@@ -1,25 +1,24 @@
 import { Prop,Schema as MongooseSchema, SchemaFactory } from "@nestjs/mongoose";
 import { Document,Schema} from "mongoose";
+import { Admin } from "src/admin/entities/admin.entity";
+import { Organizador } from "src/organizador/entities/organizador.entity";
 
 @MongooseSchema()
 export class Evento extends Document {
     @Prop()
-    id_evento:string;
-
-    @Prop()
     tipo:string;
 
     @Prop()
-    feha:Date;
+    fecha:string;
 
-    @Prop()
-    id_admin:string;
+    @Prop({ type: Schema.Types.ObjectId, ref: 'Admin', required: true })
+    admin:Admin;
 
     @Prop()
     ubicacion:string;
 
-    @Prop()
-    id_eventista:string;
+    @Prop({ type: Schema.Types.ObjectId, ref: 'Organizador', required: true })
+    organizador:Organizador;
 
     @Prop()
     nroboletos:string;

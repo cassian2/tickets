@@ -3,9 +3,7 @@ import { IsEmail, isInt, IsNumberString, IsString,Length, MaxLength, MinLength }
 
 
 export class CreateAdminDto {
-    @IsNumberString()
-    @MinLength(5)
-    id_admin:string;
+    
 
     @MinLength(4)
     @MaxLength(30)

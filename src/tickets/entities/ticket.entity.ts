@@ -14,7 +14,7 @@ export class Ticket extends Document {
     apellidos:string;
 
     @Prop({ type: Schema.Types.ObjectId, ref: 'Evento', required: true })
-    id_evento:Evento|string;
+    evento:Evento|string;
 
     @Prop()
     cantidad:string;

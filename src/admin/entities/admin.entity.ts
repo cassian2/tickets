@@ -3,9 +3,7 @@ import { Document} from "mongoose";
 
 @Schema()
 export class Admin extends Document {
-    @Prop()
-    id_admin:string;
-
+    
     @Prop()
     nombre:string;
 

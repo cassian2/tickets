@@ -1,11 +1,29 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateEventoDto } from './dto/create-evento.dto';
 import { UpdateEventoDto } from './dto/update-evento.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Evento } from './entities/evento.entity';
 
 @Injectable()
 export class EventoService {
-  create(createEventoDto: CreateEventoDto) {
-    return 'This action adds a new evento';
+  constructor(
+    @InjectModel(Evento.name)
+    private readonly adminModel:Model<Evento>
+  ){}
+  async create(createEventoDto: CreateEventoDto) {
+    
+    try {
+      const admin=await this.adminModel.create(createEventoDto);
+
+      return admin;
+      
+    } catch (error) {
+      
+        throw new BadRequestException(error)
+      
+      
+    }
   }
 
   findAll() {

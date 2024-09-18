@@ -1,4 +1,4 @@
-import { IsEmail, isInt, IsNumberString, IsString,Length, MaxLength, MinLength } from "class-validator";
+import { IsEmail, isInt, IsMongoId, IsNumberString, IsString,Length, MaxLength, MinLength } from "class-validator";
 
 export class CreateTicketDto {
     @IsNumberString()
@@ -13,9 +13,8 @@ export class CreateTicketDto {
     @MaxLength(30)
     apellidos:string;
 
-    @IsNumberString()
-    @Length(8)
-    id_evento:string;
+    @IsMongoId()
+    evento:string;
 
     @IsNumberString()
     @MinLength(5)

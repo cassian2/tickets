@@ -13,6 +13,7 @@ export class AdminService {
   ){}
   async create(createAdminDto: CreateAdminDto) {
     createAdminDto.nombre=createAdminDto.nombre.toLowerCase();
+    createAdminDto.apellidos=createAdminDto.apellidos.toLowerCase();
     createAdminDto.dni=createAdminDto.dni;
     createAdminDto.celular=createAdminDto.celular;
     try {
