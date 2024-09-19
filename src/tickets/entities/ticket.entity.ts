@@ -5,7 +5,7 @@ import { Evento } from "src/evento/entities/evento.entity";
 @MongooseSchema()
 export class Ticket extends Document {
     @Prop()
-    id_ticket:string;
+    uuid:string;
 
     @Prop()
     nombres:string;
