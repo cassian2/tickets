@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTicketDto } from './dto/create-ticket.dto';
 import { UpdateTicketDto } from './dto/update-ticket.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -15,6 +15,7 @@ export class TicketsService {
   ){}
   async create(createTicketDto: CreateTicketDto) {
     createTicketDto.uuid=uuidv4();
+    createTicketDto.usados="0";
     try {
       const Organizador=await this.ticketModel.create(createTicketDto);
 
@@ -37,18 +38,28 @@ export class TicketsService {
     
     try {
       ticket=await this.ticketModel.findOne({_id:id})
+      if (!ticket) {
+        throw new NotFoundException(`Producto con ID #${id} no encontrado.`);
+    }
       return ticket;
     }catch(error){
-      return error.message.toJSON();
+      return error
     }
   }
-  async picar(id: string, updateTicketDto: UpdateTicketDto) {
-    
-    const Ticket= await this.ticketModel.findOne({uuid:id})
-    updateTicketDto.usados=(parseInt(Ticket.usados)+1).toString();
-    await Ticket.updateOne(updateTicketDto,{new:true })
-
-    return {...Ticket.toJSON(),...updateTicketDto};
+  async picar(id: string) {
+    try{
+    let Ticket= await this.ticketModel.findOne({uuid:id})
+    if (!Ticket) {
+      throw new NotFoundException(`Producto con ID #${id} no encontrado.`);
+    }
+    Ticket.usados=(parseInt(Ticket.usados)+1).toString();
+    await Ticket.save()
+    return Ticket;
+    }
+    catch(error){
+      return error.message.toJSON();
+    }
+   
   }
 
   async update(id: string, updateTicketDto: UpdateTicketDto) {

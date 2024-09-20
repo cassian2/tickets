@@ -7,19 +7,19 @@ export class Ticket extends Document {
     @Prop()
     uuid:string;
 
-    @Prop()
+    @Prop({required:true})
     nombres:string;
 
-    @Prop()
+    @Prop({required:true})
     apellidos:string;
 
     @Prop({ type: Schema.Types.ObjectId, ref: 'Evento', required: true })
     evento:Evento|string;
 
-    @Prop()
+    @Prop({required:true})
     cantidad:string;
 
-    @Prop()
+    @Prop({required:true})
     usados:string;
 
     @Prop()

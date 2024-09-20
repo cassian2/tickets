@@ -26,9 +26,9 @@ export class TicketsController {
   update(@Param('id') id: string, @Body() updateTicketDto: UpdateTicketDto) {
     return this.ticketsService.update(id, updateTicketDto);
   }
-  @Patch('picar/:id')
-  picar(@Param('id') id: string, @Body() updateTicketDto: UpdateTicketDto) {
-    return this.ticketsService.picar(id, updateTicketDto);
+  @Get('picar/:id')
+  picar(@Param('id') id: string) {
+    return this.ticketsService.picar(id);
   }
 
   @Delete(':id')
