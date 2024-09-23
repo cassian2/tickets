@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { EventoService } from './evento.service';
 import { CreateEventoDto } from './dto/create-evento.dto';
 import { UpdateEventoDto } from './dto/update-evento.dto';
+import { LoginDto } from './dto/login.dto';
 
 @Controller('evento')
 export class EventoController {
@@ -15,6 +16,11 @@ export class EventoController {
   @Get()
   findAll() {
     return this.eventoService.findAll();
+  }
+  @Get('login')
+  login(@Body() loginDto: LoginDto){
+    return this.eventoService.login(loginDto);
+
   }
 
   @Get(':id')

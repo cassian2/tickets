@@ -21,7 +21,7 @@ export class CreateAdminDto {
     celular:string;
     
     @MinLength(8)
-    @MaxLength(10)
+    @MaxLength(20)
     password:string;
     
 }

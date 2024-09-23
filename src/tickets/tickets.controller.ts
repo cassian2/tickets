@@ -12,9 +12,9 @@ export class TicketsController {
     return this.ticketsService.create(createTicketDto);
   }
 
-  @Get()
-  findAll() {
-    return this.ticketsService.findAll();
+  @Get('admin/:id')
+  findAll(@Param('id') id: string) {
+    return this.ticketsService.findAll(id);
   }
 
   @Get(':id')

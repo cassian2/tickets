@@ -4,6 +4,8 @@ import { UpdateAdminDto } from './dto/update-admin.dto';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Admin } from './entities/admin.entity';
+import { LoginDto } from './dto/login.dto';
+import { ErrorManager } from 'src/utils/error.manager';
 
 @Injectable()
 export class AdminService {
@@ -31,6 +33,23 @@ export class AdminService {
 
   findAll() {
     return `This action returns all admin`;
+  }
+  async login(logindto:LoginDto){
+  
+    
+    try {
+      logindto=await this.adminModel.findOne({dni:logindto.dni,password:logindto.password})
+      if (!logindto) {
+        throw new ErrorManager({
+          type:'BAD_REQUEST',
+          message:`Usuario o contraseña incorrecto`
+        })
+    }
+    
+      return logindto;
+    }catch(error){
+      throw ErrorManager.createSignatureError(error.message)
+    }
   }
 
   findOne(id: number) {

@@ -22,7 +22,7 @@ export class Ticket extends Document {
     @Prop({required:true})
     usados:string;
 
-    @Prop()
+    @Prop({unique:true ,required:true})
     dni:string;
 
 }

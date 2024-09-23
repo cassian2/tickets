@@ -19,8 +19,7 @@ export class CreateTicketDto {
     @MinLength(1)
     cantidad:string;
 
-    @IsNumberString()
-    @MinLength(1)
+
     usados:string;
 
     @IsNumberString()

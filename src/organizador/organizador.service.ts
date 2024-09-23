@@ -15,9 +15,6 @@ export class OrganizadorService {
     
     createOrganizadorDto.nombre=createOrganizadorDto.nombre.toLowerCase();
     createOrganizadorDto.apellidos=createOrganizadorDto.apellidos.toLowerCase();
-    createOrganizadorDto.dni=createOrganizadorDto.dni;
-    createOrganizadorDto.celular=createOrganizadorDto.celular;
-    createOrganizadorDto.password=createOrganizadorDto.password;
     createOrganizadorDto.ubicacion=createOrganizadorDto.ubicacion.toLocaleLowerCase();
     createOrganizadorDto.empresa=createOrganizadorDto.empresa.toLocaleLowerCase();
     try {

@@ -17,7 +17,7 @@ export class Admin extends Document {
     Celular:string;
     
     @Prop()
-    Password:string;
+    password:string;
 
 }
 export const AdminSchema = SchemaFactory.createForClass(Admin);
