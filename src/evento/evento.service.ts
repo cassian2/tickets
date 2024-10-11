@@ -43,7 +43,7 @@ export class EventoService {
         })
     }
     
-      return filterevento;
+      return filterevento[0];
     }catch(error){
       throw ErrorManager.createSignatureError(error.message)
     }

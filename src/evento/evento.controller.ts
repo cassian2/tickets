@@ -17,7 +17,7 @@ export class EventoController {
   findAll() {
     return this.eventoService.findAll();
   }
-  @Get('login')
+  @Post('login')
   login(@Body() loginDto: LoginDto){
     return this.eventoService.login(loginDto);
 

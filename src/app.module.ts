@@ -9,8 +9,8 @@ import { OrganizadorModule } from './organizador/organizador.module';
 
 @Module({
   imports: [
-    //MongooseModule.forRoot('mongodb+srv://admintickets:7W4XYX1hHDwm3gzK@dbtickets.jlr4q.mongodb.net/?'),
-    MongooseModule.forRoot('mongodb://localhost:27017/tickets'),
+    MongooseModule.forRoot('mongodb+srv://admintickets:7W4XYX1hHDwm3gzK@dbtickets.jlr4q.mongodb.net/?'),
+    //MongooseModule.forRoot('mongodb://localhost:27017/tickets'),
     EventoModule,
     AdminModule,
     TicketsModule,
